@@ -3,6 +3,7 @@
     use App\Http\Controllers\UsuarioController;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\PaginaController;
+    use App\Http\Controllers\CursoController;
 
     Route::get('/', function () {
         return view('welcome');
@@ -60,3 +61,23 @@
     });
 
     Route::get('/produto/{id}', [PaginaController::class, 'produto']);
+
+    Route::get('/cursos', [CursoController::class, 'index']);
+
+    Route::get('/cursos/novo', [CursoController::class, 'create']);;Route::get('/cursos/lista', [CursoController::class, 'listagem']);
+
+    Route::get('/cursos/{id}', [CursoController::class, 'show']);
+
+    Route::post('/cursos', [CursoController::class, 'store']);
+
+    Route::resource('alunos', App\Http\Controllers\AlunoController::class);
+
+    Route::get('/disciplinas', [App\Http\Controllers\DisciplinaController::class, 'index']);
+
+    Route::get('/disciplinas/novo', [App\Http\Controllers\DisciplinaController::class, 'create']);
+
+    Route::get('/disciplinas/{id}', [App\Http\Controllers\DisciplinaController::class, 'show']);
+
+    Route::get('/produtos/create', [App\Http\Controllers\ProdutoController::class, 'create']);
+    
+    Route::post('/produtos', [App\Http\Controllers\ProdutoController::class, 'store']);
